@@ -28,6 +28,10 @@ Adafruit_NeoMatrix *matrix = new Adafruit_NeoMatrix(mw, mh, PIN,
 
 //***************************************************************************
 
+//Choose the computer's number
+int comp_num;
+int guess;
+
 //Scrolling text function
 void scrollText(String text, int c) {
   matrix->clear();
@@ -40,10 +44,6 @@ void scrollText(String text, int c) {
     delay(50);
   }
 }
-
-//Choose the computer's number
-int comp_num;
-int guess;
 
 //Game function
 void guessing_game(){
@@ -84,24 +84,24 @@ void stop(){
 //***************************************************************************
 
 void setup() {
-  randomSeed(analogRead(0));
+  randomSeed(analogRead(0)); //Random noise seeds the generator
    
   Serial.begin(115200);
-  
+
+  //Initialize the matrix using earlier parameters
   matrix->begin();
   matrix->clear();
   matrix->setTextWrap(false);
   matrix->setBrightness(BRIGHTNESS);
-  
-  
 }
 
 void loop() {
   comp_num = random(1, 101);
-  //Serial.println(comp_num);
+
   Serial.println("Guess a number beween 1 and 100.");
   delay(3000);
   guessing_game();
+  
   Serial.println("Would you like to play again? (y/n)");
   delay(5000);
   if (Serial.available() > 0) {
@@ -110,5 +110,4 @@ void loop() {
       stop();
     }
   }
-
 }
