@@ -1,5 +1,5 @@
 # PHYS485_Final_Project
-#Vivian Carvajal
+# Vivian Carvajal
 
 This repository contains my Arduino code for my final project, along with a video of the code in action.
 
